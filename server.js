@@ -14,8 +14,22 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.set('db', massiveServer);
+//app.set('db', massiveServer);
 
 var db = app.get('db');
 //console.log(db);
 var port = 3000;
+
+
+app.get('/api/product', (request, response) => {
+    response.send({
+      product_id: 1,
+      product_name: 'Test Shirt',
+      product_description: 'This is a t-shirt to wear',
+      product_price: 12.45,
+    })
+});
+
+app.listen(port, function() {
+  console.log("Started server on port", port);
+});
