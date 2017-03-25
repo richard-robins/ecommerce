@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 var db = app.get('db');
 //console.log(db);
-var port = 3000;
+var port = process.env.port || 3000;
 
 
 app.get('/api/product', (request, response) => {
@@ -27,8 +27,11 @@ app.get('/api/product', (request, response) => {
       product_name: 'Test Shirt',
       product_description: 'This is a t-shirt to wear',
       product_price: 12.45,
+      brand_name: Nike,
     })
 });
+
+
 
 app.listen(port, function() {
   console.log("Started server on port", port);
