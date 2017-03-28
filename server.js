@@ -2,23 +2,25 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const massive = require('massive');
+const connectionString = 'postgres://@localhost/ecomm'
 
 const app = express();
 
 
 
-// var massiveServer = massive.connectSync({
-//   connectionString: "postgres://@localhost/massive-demo-01"
-// });
+var massiveServer = massive.connectSync({
+  connectionString : connectionString
+});
 
 
 app.use(bodyParser.json());
 
-//app.set('db', massiveServer);
+app.set('db', massiveServer);
 
 var db = app.get('db');
 //console.log(db);
-var port = process.env.port || 3000;
+//var port = process.env.port || 3000;
+var port = 3000;
 
 
 app.get('/api/product', (request, response) => {
